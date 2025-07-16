@@ -1,1 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Curricular Interactiva - FAUSAC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/logo-usac.jpg" type="image/x-icon">
+</head>
+<body>
+    <header class="main-header">
+        <img src="assets/logo-usac.jpg" alt="Logo USAC" class="header-logo">
+        <h1>Red Curricular Interactiva - Facultad de Arquitectura USAC</h1>
+    </header>
 
+    <main>
+        <section id="login-screen" class="screen active">
+            <div class="login-container">
+                <h2>Ingresa tu Contraseña</h2>
+                <input type="password" id="password-input" placeholder="Contraseña">
+                <button id="login-button">Acceder</button>
+                <p id="error-message" class="error-message"></p>
+            </div>
+        </section>
+
+        <section id="curriculum-screen" class="screen hidden">
+            <div class="curriculum-header">
+                <h2>Tu Red Curricular Interactiva</h2>
+                <p>Aquí están todos los datos, los cursos con sus requisitos respectivos. Marca como "Aprobado" para desbloquear los cursos siguientes.</p>
+            </div>
+            <div id="curriculum-grid" class="curriculum-grid">
+                </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
