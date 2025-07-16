@@ -1,1 +1,316 @@
+/* Variables de color */
+:root {
+    --color-primary: #FFD700; /* Amarillo */
+    --color-secondary: #333;  /* Gris oscuro/negro */
+    --color-background: #1a1a1a; /* Negro muy oscuro */
+    --color-text: #f0f0f0;    /* Blanco grisáceo */
+    --color-light-gray: #666; /* Gris intermedio */
+    --color-border: #555;     /* Borde gris */
+    --color-approved: #28a745; /* Verde para aprobado */
+    --color-disabled: #888;   /* Gris para deshabilitado */
+}
 
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-header {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--color-primary);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-logo {
+    width: 60px; /* Tamaño del logo */
+    height: 60px;
+    margin-right: 15px;
+    border-radius: 50%; /* Si quieres que sea circular */
+    object-fit: cover;
+    border: 2px solid var(--color-primary);
+}
+
+.main-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.screen {
+    width: 90%;
+    max-width: 1200px;
+    background-color: var(--color-secondary);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none; /* Evita interacciones cuando está oculto */
+    position: absolute; /* Para que no ocupe espacio cuando está oculto */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Asegura que no se vea */
+}
+
+.active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    display: block; /* Asegura que se vea */
+}
+
+/* Estilos de la pantalla de Login */
+.login-container {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.login-container h2 {
+    color: var(--color-primary);
+    margin-bottom: 30px;
+    font-size: 2.2em;
+}
+
+#password-input {
+    width: 80%;
+    max-width: 300px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border: 2px solid var(--color-light-gray);
+    border-radius: 8px;
+    background-color: #444;
+    color: var(--color-text);
+    font-size: 1.1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#password-input:focus {
+    border-color: var(--color-primary);
+}
+
+#login-button {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+#login-button:hover {
+    background-color: #e6c200; /* Un tono más oscuro de amarillo */
+    transform: translateY(-2px);
+}
+
+.error-message {
+    color: #ff6347; /* Un rojo para mensajes de error */
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Estilos de la Red Curricular */
+.curriculum-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.curriculum-header h2 {
+    color: var(--color-primary);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.curriculum-header p {
+    font-size: 1.1em;
+    color: var(--color-text);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.curriculum-grid {
+    display: grid;
+    gap: 30px; /* Espacio entre los cursos */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas responsivas */
+}
+
+.course-year-semester {
+    grid-column: 1 / -1; /* Ocupa todo el ancho */
+    background-color: #2a2a2a;
+    color: var(--color-primary);
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 1.6em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.course-card {
+    background-color: #222;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Para la línea de conexión */
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.course-card h3 {
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    border-bottom: 1px dashed var(--color-light-gray);
+    padding-bottom: 8px;
+}
+
+.course-card p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: var(--color-text);
+}
+
+.course-info {
+    font-size: 0.85em;
+    color: var(--color-light-gray);
+    margin-top: auto; /* Empuja los créditos hacia abajo */
+}
+
+.course-button {
+    background-color: var(--color-light-gray);
+    color: var(--color-secondary);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.course-button:hover:not(:disabled) {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    transform: translateY(-2px);
+}
+
+.course-button:disabled {
+    background-color: var(--color-disabled);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.course-card.approved .course-button {
+    background-color: var(--color-approved);
+    color: white;
+}
+
+.course-card.approved .course-button:hover {
+    background-color: #218838; /* Tono más oscuro de verde */
+}
+
+/* Líneas de conexión (más complejo de implementar solo con CSS estático, se necesitaría JS para esto)
+   Para una verdadera "malla interactiva" con líneas que conectan, lo haríamos dinámicamente con JavaScript
+   y SVG, o posicionando elementos con CSS si la estructura es más fija.
+   Por ahora, el "desbloqueo" visual es la principal interactividad.
+*/
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 1.4em;
+    }
+
+    .login-container h2 {
+        font-size: 1.8em;
+    }
+
+    #password-input {
+        width: 90%;
+    }
+
+    #login-button {
+        width: 90%;
+        padding: 12px 20px;
+    }
+
+    .curriculum-header h2 {
+        font-size: 2em;
+    }
+
+    .course-card {
+        padding: 15px;
+    }
+
+    .course-card h3 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .header-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .main-header h1 {
+        font-size: 1.2em;
+    }
+    .screen {
+        padding: 20px;
+    }
+    .login-container h2 {
+        font-size: 1.5em;
+    }
+    .course-year-semester {
+        font-size: 1.3em;
+    }
+    .curriculum-grid {
+        gap: 20px;
+    }
+}
